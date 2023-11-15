@@ -1,47 +1,50 @@
-import { galleryItems } from "./gallery-items.js";
-// Change code below this line
+// 02-lightbox.js
 
-const galleryContainer = document.querySelector(".gallery");
+import { galleryItems } from './gallery-items.js';
 
-function renderGallery() {
-  galleryItems.forEach((item) => {
-    const galleryItem = document.createElement("li");
-    galleryItem.classList.add("gallery__item");
+document.addEventListener('DOMContentLoaded', function () {
+  const galleryContainer = document.getElementById('gallery-container');
 
-    const link = document.createElement("a");
-    link.classList.add("gallery__link");
-    link.href = item.original;
+  function renderGallery() {
+    galleryItems.forEach(item => {
+      const galleryItem = document.createElement('li');
+      galleryItem.classList.add('gallery__item');
 
-    const image = document.createElement("img");
-    image.classList.add("gallery__image");
-    image.src = item.preview;
-    image.alt = item.description;
+      const link = document.createElement('a');
+      link.classList.add('gallery__link');
+      link.href = item.original;
 
-    link.appendChild(image);
-    galleryItem.appendChild(link);
-    galleryContainer.appendChild(galleryItem);
-  });
+      const image = document.createElement('img');
+      image.classList.add('gallery__image');
+      image.src = item.preview;
+      image.alt = item.description;
 
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captions: true,
-    captionDelay: 250,
-  });
+      link.appendChild(image);
+      galleryItem.appendChild(link);
+      galleryContainer.appendChild(galleryItem);
+    });
 
-  lightbox.on("show.simplelightbox", function () {
-    document.addEventListener("keydown", closeModalOnEscape);
-  });
+    // Inicjalizacja biblioteki SimpleLightbox
+    const lightbox = new SimpleLightbox('.gallery a', {
+      captions: true,
+      captionDelay: 250,
+    });
 
-  lightbox.on("close.simplelightbox", function () {
-    document.removeEventListener("keydown", closeModalOnEscape);
-  });
-}
+    lightbox.on('show.simplelightbox', function () {
+      document.addEventListener('keydown', closeModalOnEscape);
+    });
 
-function closeModalOnEscape(e) {
-  if (e.key === "Escape") {
-    SimpleLightbox.close();
+    lightbox.on('close.simplelightbox', function () {
+      document.removeEventListener('keydown', closeModalOnEscape);
+    });
   }
-}
 
-renderGallery();
+  function closeModalOnEscape(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', closeModalOnEscape);
+      lightbox.close();
+    }
+  }
 
-console.log(galleryItems);
+  renderGallery();
+});
