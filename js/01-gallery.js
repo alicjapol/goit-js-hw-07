@@ -38,7 +38,7 @@ const galleryContainer = document.querySelector(".gallery");
 
   function closeModalOnEscape(e) {
     if (e.key === 'Escape') {
-      basicLightbox.close();
+     lightbox.close();
       document.removeEventListener('keydown', closeModalOnEscape);
     }
   }
