@@ -22,12 +22,11 @@ function renderGallery() {
   });
 }
 
-
-
 renderGallery();
-
 
 const lightbox = new SimpleLightbox(".gallery a", {
   captions: true,
-  captionDelay: 250,});
-  
+  captionDelay: 250,
+  captionsData: "alt",
+  enableKeyboard: true,
+});

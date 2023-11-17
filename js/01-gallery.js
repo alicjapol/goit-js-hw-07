@@ -32,17 +32,16 @@ galleryContainer.addEventListener("click", function (event) {
       (item) => item.original === event.target.getAttribute("data-source")
     );
 
-    const lightbox = basicLightbox.create(`
-    <img src="${selectedItem.original}" alt="${selectedItem.description}">
+    const lightbox = basicLightbox.create(
+      `
+    <img src="${selectedItem.original}" alt="${selectedItem.description}" width="900" height="600">
     <p>${selectedItem.description}</p>
-  `, {
-      width: 800,
-      height: 600,
-    });
+  `,
+      {}
+    );
 
     lightbox.show();
   }
 });
 
 console.log(galleryItems);
-
