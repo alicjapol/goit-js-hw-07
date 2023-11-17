@@ -1,6 +1,4 @@
 import { galleryItems } from "./gallery-items.js";
-var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
-
 
 const galleryContainer = document.querySelector(".gallery");
 
@@ -21,17 +19,13 @@ function renderGallery() {
     link.appendChild(image);
     galleryItem.appendChild(link);
     galleryContainer.appendChild(galleryItem);
-
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      const lightbox = basicLightbox.create(`
-        <img src="${item.original}" alt="${item.description}">
-        <p>${item.description}</p>
-      `);
-      lightbox.show();
-    });
   });
 }
+const lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionDelay: 250,});
+
 
 renderGallery();
+
+

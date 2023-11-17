@@ -22,20 +22,20 @@ const galleryContainer = document.querySelector(".gallery");
       galleryItem.appendChild(link);
       galleryContainer.appendChild(galleryItem);
 
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const lightbox = basicLightbox.create(`
-          <img src="${item.original}" alt="${item.description}">
-        `);
-
-        lightbox.show();
-
-      });
     });
   }
   renderGallery();
 
-
+  galleryContainer.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target.nodeName === "IMG") {
+      const lightbox = basicLightbox.create(`
+    <img src="${item.original}" alt="${item.description}">
+    <p>${item.description}</p>
+  `);
+      lightbox.show();
+    }
+    })
+    
 
 console.log(galleryItems);
