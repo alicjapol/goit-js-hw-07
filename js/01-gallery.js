@@ -1,5 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
+
 const galleryContainer = document.querySelector(".gallery");
 let selectedItem;
 
@@ -28,15 +28,21 @@ renderGallery();
 galleryContainer.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target.nodeName === "IMG") {
-selectedItem = galleryContainer.find(
-  (item) => item.original === event.target.getAttribute("data-source")
-);
+    selectedItem = galleryItems.find(
+      (item) => item.original === event.target.getAttribute("data-source")
+    );
+
     const lightbox = basicLightbox.create(`
-    <img src="${item.original}" alt="${item.description}">
-    <p>${item.description}</p>
-  `);
+    <img src="${selectedItem.original}" alt="${selectedItem.description}">
+    <p>${selectedItem.description}</p>
+  `, {
+      width: 800,
+      height: 600,
+    });
+
     lightbox.show();
   }
 });
 
 console.log(galleryItems);
+
