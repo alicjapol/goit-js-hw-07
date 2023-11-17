@@ -1,14 +1,6 @@
-
 import { galleryItems } from "./gallery-items.js";
 
 const galleryContainer = document.querySelector(".gallery");
-
-var lightbox = new SimpleLightbox(".gallery a", {
-  captions: true,
-  captionDelay: 250,
-});
-
-
 
 function renderGallery() {
   galleryItems.forEach((item) => {
@@ -27,24 +19,18 @@ function renderGallery() {
     link.appendChild(image);
     galleryItem.appendChild(link);
     galleryContainer.appendChild(galleryItem);
+
+    // Dodaj nasłuchiwanie na każdy element galerii
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const lightbox = basicLightbox.create(`
+        <img src="${item.original}" alt="${item.description}">
+        <p>${item.description}</p>
+      `);
+      lightbox.show();
+    });
   });
 }
 
-galleryContainer.addEventListener("click", function (event) {
-  event.preventDefault()
-}
-);
-
-lightbox = basicLightbox.create(`
-<img src="${item.original}" alt="${item.description}">
-`);
-
-lightbox.show();
-
 renderGallery();
-
-
-
-
-
-

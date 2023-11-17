@@ -34,9 +34,8 @@ const galleryContainer = document.querySelector(".gallery");
       });
     });
   }
-
-  
-
   renderGallery();
+
+
 
 console.log(galleryItems);
