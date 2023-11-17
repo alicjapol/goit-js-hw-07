@@ -31,17 +31,11 @@ const galleryContainer = document.querySelector(".gallery");
 
         lightbox.show();
 
-        document.addEventListener('keydown', closeModalOnEscape);
       });
     });
   }
 
-  function closeModalOnEscape(e) {
-    if (e.key === 'Escape') {
-     lightbox.close();
-      document.removeEventListener('keydown', closeModalOnEscape);
-    }
-  }
+  
 
   renderGallery();
 
