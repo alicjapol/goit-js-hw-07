@@ -21,11 +21,13 @@ function renderGallery() {
     galleryContainer.appendChild(galleryItem);
   });
 }
-const lightbox = new SimpleLightbox(".gallery a", {
-  captions: true,
-  captionDelay: 250,});
+
 
 
 renderGallery();
 
 
+const lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionDelay: 250,});
+  
