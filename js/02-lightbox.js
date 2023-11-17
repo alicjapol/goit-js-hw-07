@@ -20,7 +20,6 @@ function renderGallery() {
     galleryItem.appendChild(link);
     galleryContainer.appendChild(galleryItem);
 
-    // Dodaj nasłuchiwanie na każdy element galerii
     link.addEventListener("click", function (event) {
       event.preventDefault();
 
